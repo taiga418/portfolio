@@ -1,3 +1,11 @@
-body {
-  color: red;
+@import 'settings';
+
+@import 'layout/home';
+@import 'layout/about';
+@import 'components/nav';
+@import 'components/content-box';
+
+#app{
+  width: 90%;
+  margin: 0px auto 0px auto;
 }

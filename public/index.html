@@ -1,9 +1,29 @@
 <!doctype html>
 <html>
   <head>
-    <script src="../bower_components/knockout/" />
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
   </head>
   <body>
-    <h1>Hello World</h1>
+    <div id="app">
+      <nav class="nav">
+        <div class="slider">
+          <span class="taiga">Taiga Matsumoto</span>
+          <span class="hidden-content">Secret Stuff</span>
+        </div>
+        <div data-bind="foreach: navItems()">
+          <a class="item" data-bind="text: $data, css: { activeNav: $data === $root.active() }, click: $root.selectActive"></a>
+        </div>
+      </nav>
+      <main class="main-content">
+        <div class="about">
+          <h2>About</h2>
+          <div class="content-box">
+            Hiello
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./lib/knockout/dist/knockout.js" ></script>
+    <script src="./js/app.js" ></script>
   </body>
 </html>
