@@ -4,27 +4,34 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --harmony server/server.js",
-    "build": "node_modules/.bin/gulp build",
-    "sass:watch": "node_modules/.bin/gulp sass:watch",
-    "babelify:watch": "node_modules/.bin/gulp babelify:watch",
-    "bundle" : "node_modules/.bin/gulp bundle",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --debug",
+    "start": "node server/index.js;",
+    "dev": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bower-requirejs": "^1.2.0",
-    "gulp": "^3.9.1",
-    "gulp-bower": "0.0.13",
-    "gulp-concat": "^2.6.0",
-    "gulp-requirejs-optimize": "^1.0.0",
-    "gulp-sass": "^2.3.1",
+    "knockout": "^3.4.2",
     "koa": "^1.2.0",
     "koa-static": "^2.0.0"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.9.0",
-    "gulp-babel": "^6.1.2"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "extract-text-webpack-plugin": "^2.0.0-beta",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
   }
 }

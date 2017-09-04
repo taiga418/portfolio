@@ -1,11 +1,27 @@
 @import 'settings';
-
+@import 'animations';
 @import 'layout/home';
-@import 'layout/about';
-@import 'components/nav';
-@import 'components/content-box';
 
-#app{
-  width: 90%;
-  margin: 0px auto 0px auto;
+
+// reset css
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+div#app{
+  height: 100%;
+  background: $background-image no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0;
+
+  // auto-prefixer
+  transition: opacity 1.5s ease-out 1s;
+
+  &.background-image-loaded{
+    opacity: 1;
+  }
 }
