@@ -1,0 +1,47 @@
+// border mixin
+@mixin animated-borders{
+  .border{
+    background-color: white;
+    position: absolute;
+    z-index: $z-index-med + 3;
+    animation-duration: 0.5s;
+    animation-delay: $base-animation-delay; //TODO: after fade stops
+    animation-timing-function: linear;
+  }
+  .top{
+    height: 1px;
+    top: 0;
+    left: 0;
+    animation-name: growHorizontal;
+    animation-fill-mode: forwards;
+  }
+  .bottom{
+    height: 1px;
+    right: 0;
+    bottom: 0;
+    animation-name: growHorizontal;
+    animation-fill-mode: forwards;
+  }
+
+  .right{
+    width: 1px;
+    right: 0;
+    bottom: 0;
+    animation-name: growVertical;
+    animation-fill-mode: forwards;
+  }
+  .left{
+    width: 1px;
+    left: 0;
+    top: 0;
+    animation-name: growVertical;
+    animation-fill-mode: forwards;
+  }
+}
+
+@mixin animated-caret{
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-delay: $base-animation-delay; //TODO: after fade stops
+  animation-iteration-count: 4;
+}

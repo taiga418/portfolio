@@ -5,7 +5,7 @@ module.exports = {
   entry: [
     './client/styles/scss/index.scss',
     'webpack-dev-server/client?http://localhost:8080',
-    './client/app.js',
+    './client/app.js'
   ],
   output: {
     path: path.join(__dirname, 'build'),
@@ -13,7 +13,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -22,18 +22,30 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        use: [{
-                loader: "style-loader" // creates style nodes from JS strings
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            }, {
-                loader: "sass-loader" // compiles Sass to CSS
-            }]
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader!sass-loader'
+        })
       },
+      // for font aweseome
       {
         test: /\.css$/,
-        loader: 'sass-loader!css-loader',
-      }
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader!sass-loader'
+        })
+      },
+      {
+         test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+         use: [{
+           loader: 'file-loader',
+           options: {
+             name: '[name].[ext]',
+             outputPath: 'fonts/',    // where the fonts will go
+             publicPath: '/assets/'       // override the default path
+           }
+         }]
+       }
     ]
   },
   plugins: [

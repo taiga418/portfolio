@@ -1,5 +1,19 @@
-$red: #ff371b;
-$blue: #1a66ff;
-$white: #e6e6ff;
-$off-white: #ccccff;
+// COLORS
+$font-color: #E8F0E3;
+$icon-hover-color: #758585;
+
+// FONTS
+$header-font: "museo-slab",Georgia,"Times New Roman",Times,serif;
+$paragraph-font: "Laro", Georgia, serif;
+$h2-font: "Lora", Georgia, serif;
+
+// MISC.
 $background-image: url(https://i.pinimg.com/originals/91/2f/82/912f8214449d625e8e3d4ba70c51416e.jpg);
+$z-index-low: -100;
+$z-index-med: 0;
+$z-index-high: 100;
+$margin-x: 20px;
+
+
+// Animation
+$base-animation-delay: 2s;

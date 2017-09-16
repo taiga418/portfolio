@@ -1,10 +1,52 @@
 <!doctype html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
     <title>Taiga Matsumoto</title>
   </head>
   <body>
-    <div id="app">hi</div>
+    <div id="app">
+      <div class="loading-spinner">Loading...</div>
+      <div class="full-screen-overlay">
+        <div class="banner">
+          <!--  NOTE: borders are indivdual divs instead of pseudo-elements for easier animation -->
+          <div class="border top"></div>
+          <div class="border right"></div>
+          <div class="border bottom"></div>
+          <div class="border left"></div>
+          <span class="text-content">
+            <h2>Taiga Matsumoto</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed odio est.
+              Curabitur quis iaculis lorem, at fringilla ipsum. Curabitur blandit vestibulum felis et facilisis.
+            </p>
+          </span>
+          <div class="caret-click-area" data-bind="click: expandBox, clickBubble: false">
+            <i class="fa fa-chevron-down"></i>
+          </div>
+        </div>
+        <!-- <section class="about"></section> -->
+        <footer>
+          <div class="contact-block">
+            <div class="icon github">
+              <a href="https://github.com/taiga418" rel="noopener noreferrer" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+            </div>
+            <div class="icon linkedin">
+              <a href="https://www.linkedin.com/in/taigamatsumoto" rel="noopener noreferrer" target="_blank">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </div>
+            <div class="icon email">
+              <a href="mailto:taiga418@gmail.com" rel="noopener noreferrer" target="_blank">
+                <i class="fa fa-envelope-o"></i>
+              </a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
     <script src="assets/bundle.js"></script>
   </body>
 </html>
