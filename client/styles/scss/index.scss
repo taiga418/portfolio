@@ -99,9 +99,9 @@ $banner-height: 200px;
 
   // click on the arrow to expand the content box
   &.expanded{
-    height: 600px;
+    height: 80%;
     transition: height 1s, top 1s;
-    top: 10%;
+    top: 5%;
     .caret-click-area{
       display: none;
     }
