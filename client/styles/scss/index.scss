@@ -1,11 +1,165 @@
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
 @import 'settings';
-
+@import 'animations';
 @import 'layout/home';
-@import 'layout/about';
-@import 'components/nav';
-@import 'components/content-box';
+@import 'components/banner.scss';
+@import 'components/contact-icons.scss';
+// reset css
+html, body{
+  height: 100%;
+  margin: 0;
+  h2{
+    font-family: $h2-font;
+    font-size: 30px;
+  }
+  p{
+    font-family: $paragraph-font;
+  }
+}
 
-#app{
-  width: 90%;
-  margin: 0px auto 0px auto;
+div#app{
+  color: white;
+  background-color: black;
+  display: flex;
+  height: 100%;
+  z-index: $z-index-med;
+  // when the image has loaded, fade in the overlay and hide the spinner
+  &.background-image-loaded{
+    .banner{
+      &:not(.expanded){
+        top: 25%;
+      }
+      opacity: 1;
+    }
+    .full-screen-overlay{
+      opacity: 1;
+    }
+    .loading-spinner{
+      opacity: 0;
+    }
+  }
+}
+
+// displayed while the image is loading
+$spinner-width: 100px;
+.loading-spinner{
+  align-self: center;
+  left: calc(50% - #{$spinner-width}/2);
+  opacity: 1;
+  position: absolute;
+  width: $spinner-width;
+}
+
+// main page content after image is loaded. slides up from
+.full-screen-overlay{
+  background: $background-image no-repeat center center fixed;
+  background-size: cover;display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  opacity: 0; //initially hide background
+  transition: opacity 1.5s ease-out 1s;
+  width:100%;
+  z-index: $z-index-med;
+}
+
+$content-margin-x: 40px;
+$content-margin-y: 20px;
+$banner-height: 200px;
+
+.banner{
+  height: $banner-height;
+  margin: $content-margin-y $margin-x;
+  opacity: 0;
+  position: relative;
+  top: 32%;
+  transition: opacity 1s linear 1s,
+              top 1s linear 1s;
+
+  @include animated-borders;
+
+  .text-content{
+    color: $font-color;
+    line-height: 2em;
+    margin: 20px $content-margin-x;
+    position: absolute;
+    z-index: $z-index-med + 2;
+  }
+
+  // blurred background
+  &::after{
+    background: $background-image  no-repeat center center fixed;
+    background-size: cover;
+    content: "";
+    display: block;
+    filter: blur(4px);
+    height: 100%;
+    z-index: $z-index-med + 1;
+  }
+
+  // click on the arrow to expand the content box
+  &.expanded{
+    height: 80%;
+    transition: height 1s, top 1s;
+    top: 5%;
+    .caret-click-area{
+      display: none;
+    }
+  }
+
+  .caret-click-area{
+    bottom: 10px;
+    height: 10%;
+    left: calc(50% - 50px);
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    z-index: $z-index-med + 2;
+    &:hover{
+      cursor: pointer;
+    }
+    i{
+      z-index: $z-index-med + 1;
+      @include animated-caret;
+    }
+
+  }
+}
+
+
+// footer styles
+footer{
+  align-items: flex-end;
+  align-self: flex-end;
+  height: 60px; // TODO: icon heights + margin
+  margin-top: auto;
+  margin-left: $margin-x;
+  margin-right: $margin-x;
+  margin-bottom: 20px;
+
+  width: 100%;
+
+  // github, linkedin, mail icons
+  .contact-block{
+
+    display: flex;
+    flex-flow: row;
+    height: 100%;
+    justify-content: flex-end;
+    list-style-type: none;
+    position: relative;
+    @include animated-icons;
+    .icon{
+      a{
+        color:inherit;
+      }
+      i{
+        font-size: 1.5em;
+        &:hover{
+          color: $icon-hover-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
